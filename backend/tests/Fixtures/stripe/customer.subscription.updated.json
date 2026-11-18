@@ -1,0 +1,32 @@
+{
+  "id": "{{event_id}}",
+  "object": "event",
+  "api_version": "2025-10-29.clover",
+  "type": "customer.subscription.updated",
+  "data": {
+    "object": {
+      "id": "{{sub_id}}",
+      "object": "subscription",
+      "customer": "cus_TestCustomer01",
+      "status": "{{status}}",
+      "cancel_at_period_end": {{cancel_at_period_end}},
+      "canceled_at": null,
+      "ended_at": null,
+      "trial_end": null,
+      "metadata": { "user_uuid": "{{user_uuid}}", "plan_price_uuid": "{{plan_price_uuid}}" },
+      "items": {
+        "object": "list",
+        "data": [
+          {
+            "id": "si_TestItem01",
+            "object": "subscription_item",
+            "current_period_start": {{period_start}},
+            "current_period_end": {{period_end}},
+            "price": { "id": "{{stripe_price_id}}", "object": "price", "recurring": { "interval": "month" } },
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  }
+}

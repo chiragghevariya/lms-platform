@@ -1,0 +1,33 @@
+{
+  "entity": "event",
+  "account_id": "acc_TestAccount01",
+  "event": "{{event}}",
+  "contains": ["subscription"],
+  "payload": {
+    "subscription": {
+      "entity": {
+        "id": "{{sub_id}}",
+        "entity": "subscription",
+        "plan_id": "{{razorpay_plan_id}}",
+        "customer_id": "cust_TestCustomer01",
+        "status": "{{status}}",
+        "current_start": {{period_start}},
+        "current_end": {{period_end}},
+        "ended_at": null,
+        "quantity": 1,
+        "notes": { "user_uuid": "{{user_uuid}}", "plan_price_uuid": "{{plan_price_uuid}}" },
+        "charge_at": {{period_end}},
+        "start_at": {{period_start}},
+        "end_at": 2051222400,
+        "auth_attempts": 0,
+        "total_count": 120,
+        "paid_count": {{paid_count}},
+        "customer_notify": true,
+        "created_at": {{period_start}},
+        "has_scheduled_changes": false,
+        "remaining_count": 119
+      }
+    }
+  },
+  "created_at": {{period_start}}
+}

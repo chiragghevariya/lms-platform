@@ -1,0 +1,16 @@
+{
+  "id": "evt_{{event_id}}",
+  "object": "event",
+  "type": "charge.refunded",
+  "data": {
+    "object": {
+      "id": "ch_{{charge_id}}",
+      "object": "charge",
+      "amount": {{amount}},
+      "amount_refunded": {{amount_refunded}},
+      "currency": "usd",
+      "payment_intent": "{{payment_intent}}",
+      "refunded": {{refunded}}
+    }
+  }
+}

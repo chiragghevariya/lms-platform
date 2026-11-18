@@ -1,0 +1,20 @@
+{
+  "id": "{{event_id}}",
+  "object": "event",
+  "type": "invoice.payment_failed",
+  "data": {
+    "object": {
+      "id": "{{invoice_id}}",
+      "object": "invoice",
+      "customer": "cus_TestCustomer01",
+      "currency": "usd",
+      "amount_due": {{amount}},
+      "amount_paid": 0,
+      "attempt_count": 1,
+      "billing_reason": "subscription_cycle",
+      "status": "open",
+      "subscription": "{{sub_id}}",
+      "lines": { "object": "list", "data": [ { "id": "il_TestLine02", "amount": {{amount}}, "period": { "start": {{period_start}}, "end": {{period_end}} }, "price": { "id": "{{stripe_price_id}}" } } ] }
+    }
+  }
+}

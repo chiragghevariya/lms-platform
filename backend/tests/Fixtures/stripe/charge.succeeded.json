@@ -1,0 +1,15 @@
+{
+  "id": "evt_{{event_id}}",
+  "object": "event",
+  "type": "charge.succeeded",
+  "data": {
+    "object": {
+      "id": "ch_{{charge_id}}",
+      "object": "charge",
+      "amount": {{amount}},
+      "currency": "usd",
+      "payment_intent": "{{payment_intent}}",
+      "payment_method_details": { "type": "card", "card": { "brand": "visa", "last4": "4242", "fingerprint": "{{fingerprint}}" } }
+    }
+  }
+}

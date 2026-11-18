@@ -1,0 +1,11 @@
+{
+  "entity": "event",
+  "account_id": "acc_TestAccount01",
+  "event": "payment.dispute.created",
+  "contains": ["payment", "dispute"],
+  "payload": {
+    "payment": { "entity": { "id": "{{payment_id}}", "entity": "payment", "amount": {{amount}}, "currency": "INR", "status": "captured" } },
+    "dispute": { "entity": { "id": "disp_{{payment_id}}", "entity": "dispute", "payment_id": "{{payment_id}}", "amount": {{amount}}, "phase": "chargeback", "status": "open" } }
+  },
+  "created_at": 1700000000
+}

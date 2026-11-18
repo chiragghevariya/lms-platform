@@ -1,0 +1,15 @@
+{
+  "entity": "event",
+  "account_id": "acc_TestAccount01",
+  "event": "refund.processed",
+  "contains": ["refund", "payment"],
+  "payload": {
+    "refund": {
+      "entity": { "id": "rfnd_{{refund_id}}", "entity": "refund", "amount": {{refund_amount}}, "currency": "INR", "payment_id": "{{payment_id}}", "status": "processed" }
+    },
+    "payment": {
+      "entity": { "id": "{{payment_id}}", "entity": "payment", "amount": {{amount}}, "currency": "INR", "status": "refunded", "amount_refunded": {{amount_refunded}} }
+    }
+  },
+  "created_at": 1700000000
+}

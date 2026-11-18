@@ -1,0 +1,242 @@
+{
+ "env": {
+  "contexts": [
+   {
+    "name": "lms",
+    "urls": [
+     "http://localhost:8080/api/v1",
+     "http://localhost:8081"
+    ],
+    "includePaths": [
+     "http://localhost:8080/api/v1.*",
+     "http://localhost:8081.*"
+    ],
+    "excludePaths": [
+     ".*/auth/logout.*",
+     ".*/me/sessions/.*"
+    ]
+   }
+  ],
+  "parameters": {
+   "failOnError": false,
+   "progressToStdout": true
+  }
+ },
+ "jobs": [
+  {
+   "type": "replacer",
+   "rules": [
+    {
+     "description": "bearer",
+     "matchType": "req_header",
+     "matchString": "Authorization",
+     "replacementString": "Bearer ${ZAP_TOKEN}"
+    },
+    {
+     "description": "accept",
+     "matchType": "req_header",
+     "matchString": "Accept",
+     "replacementString": "application/json"
+    }
+   ]
+  },
+  {
+   "type": "requestor",
+   "requests": [
+    {
+     "url": "http://localhost:8080/api/v1/plans",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/categories",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/courses",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/courses?q=test&sort=newest",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/courses/laravel-apis-for-paying-clients",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/courses/laravel-apis-for-paying-clients/reviews",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/site",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/cms/home",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/blog",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/cms/pages/terms",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/instructors",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me/notifications",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me/notification-preferences",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me/sessions",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me/login-activity",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me/export",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me/deletion-check",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/billing/subscription",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/billing/invoices",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/learn/lessons/01a1d30b-f615-70f1-a262-ed1e60b3e21c",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/lessons/01a1d30b-f615-70f1-a262-ed1e60b3e21c/playback",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/live-sessions",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/me/certificates",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/admin/users",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/admin/payments",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/admin/settings",
+     "method": "GET"
+    },
+    {
+     "url": "http://localhost:8080/api/v1/auth/login",
+     "method": "POST",
+     "data": "{\"email\":\"nobody@example.com\",\"password\":\"wrong-password\"}",
+     "headers": [
+      "Content-Type:application/json"
+     ]
+    },
+    {
+     "url": "http://localhost:8080/api/v1/contact",
+     "method": "POST",
+     "data": "{\"name\":\"Zap\",\"email\":\"zap@example.com\",\"subject\":\"Hello\",\"message\":\"Security scan message body\"}",
+     "headers": [
+      "Content-Type:application/json"
+     ]
+    },
+    {
+     "url": "http://localhost:8080/api/v1/learn/lessons/01a1d30b-f615-70f1-a262-ed1e60b3e21c/heartbeat",
+     "method": "POST",
+     "data": "{\"position_seconds\":10,\"watched_seconds\":5}",
+     "headers": [
+      "Content-Type:application/json"
+     ]
+    },
+    {
+     "url": "http://localhost:8080/api/v1/billing/coupons/validate",
+     "method": "POST",
+     "data": "{\"code\":\"TEST\",\"plan_price_id\":\"01a1d30b-f332-73a8-b3af-835e430c5be4\"}",
+     "headers": [
+      "Content-Type:application/json"
+     ]
+    },
+    {
+     "url": "http://localhost:8080/api/v1/learn/lessons/01a1d30b-f615-70f1-a262-ed1e60b3e21c/notes",
+     "method": "POST",
+     "data": "{\"body\":\"note text\",\"position_seconds\":3}",
+     "headers": [
+      "Content-Type:application/json"
+     ]
+    }
+   ]
+  },
+  {
+   "type": "spider",
+   "parameters": {
+    "context": "lms",
+    "url": "http://localhost:8081/",
+    "maxDuration": 2
+   }
+  },
+  {
+   "type": "passiveScan-wait",
+   "parameters": {
+    "maxDuration": 5
+   }
+  },
+  {
+   "type": "activeScan",
+   "parameters": {
+    "context": "lms",
+    "maxRuleDurationInMins": 2,
+    "maxScanDurationInMins": 20,
+    "threadPerHost": 4
+   }
+  },
+  {
+   "type": "passiveScan-wait",
+   "parameters": {
+    "maxDuration": 5
+   }
+  },
+  {
+   "type": "report",
+   "parameters": {
+    "template": "traditional-json",
+    "reportDir": "docs/security",
+    "reportFile": "zap-report.json"
+   }
+  },
+  {
+   "type": "report",
+   "parameters": {
+    "template": "traditional-html",
+    "reportDir": "docs/security",
+    "reportFile": "zap-report.html"
+   }
+  }
+ ]
+}

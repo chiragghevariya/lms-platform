@@ -1,0 +1,10 @@
+{
+  "entity": "event",
+  "event": "order.paid",
+  "contains": ["payment", "order"],
+  "payload": {
+    "payment": { "entity": { "id": "pay_TestLifetime01", "entity": "payment", "amount": {{amount}}, "currency": "INR", "status": "captured", "order_id": "{{order_id}}", "notes": [] } },
+    "order": { "entity": { "id": "{{order_id}}", "entity": "order", "amount": {{amount}}, "amount_paid": {{amount}}, "amount_due": 0, "currency": "INR", "status": "paid", "notes": { "user_uuid": "{{user_uuid}}", "plan_price_uuid": "{{plan_price_uuid}}" } } }
+  },
+  "created_at": 1794480000
+}

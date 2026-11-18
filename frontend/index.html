@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>%VITE_APP_NAME% — Learn Skills. Build Income.</title>
+    <script>
+      // Apply theme before paint to avoid a flash of the wrong mode.
+      try {
+        const t = JSON.parse(localStorage.getItem('theme') || '{}').state?.theme || 'system'
+        const dark = t === 'dark' || (t === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.toggle('dark', dark)
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Static app shell: paints instantly from HTML+CSS while the JS bundle loads (FCP);
+           React replaces it on mount. Keep it visually close to PublicLayout's header. -->
+      <div class="bg-background min-h-dvh" aria-hidden="true">
+        <div class="border-b">
+          <div class="mx-auto flex h-16 max-w-6xl items-center gap-2 px-4">
+            <span class="bg-primary inline-block size-8 rounded-lg"></span>
+            <span class="text-lg font-bold">%VITE_APP_NAME%</span>
+          </div>
+        </div>
+        <div class="from-primary/15 to-accent/10 bg-gradient-to-br via-transparent">
+          <div class="mx-auto max-w-6xl px-4 py-20 sm:py-28">
+            <p class="text-4xl font-extrabold tracking-tight sm:text-6xl">Learn Skills.</p>
+            <p class="text-accent text-4xl font-extrabold tracking-tight sm:text-6xl">Build Income.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

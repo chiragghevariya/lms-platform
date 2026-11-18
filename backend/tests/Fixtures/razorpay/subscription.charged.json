@@ -1,0 +1,37 @@
+{
+  "entity": "event",
+  "account_id": "acc_TestAccount01",
+  "event": "subscription.charged",
+  "contains": ["subscription", "payment"],
+  "payload": {
+    "subscription": {
+      "entity": {
+        "id": "{{sub_id}}",
+        "entity": "subscription",
+        "plan_id": "{{razorpay_plan_id}}",
+        "customer_id": "cust_TestCustomer01",
+        "status": "active",
+        "current_start": {{period_start}},
+        "current_end": {{period_end}},
+        "ended_at": null,
+        "notes": { "user_uuid": "{{user_uuid}}", "plan_price_uuid": "{{plan_price_uuid}}" },
+        "paid_count": {{paid_count}}
+      }
+    },
+    "payment": {
+      "entity": {
+        "id": "{{payment_id}}",
+        "entity": "payment",
+        "amount": {{amount}},
+        "currency": "INR",
+        "status": "captured",
+        "order_id": "order_TestOrder01",
+        "invoice_id": "inv_{{payment_id}}",
+        "method": "card",
+        "captured": true,
+        "notes": []
+      }
+    }
+  },
+  "created_at": {{period_start}}
+}

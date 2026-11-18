@@ -1,0 +1,18 @@
+{
+  "id": "{{event_id}}",
+  "object": "event",
+  "type": "customer.subscription.deleted",
+  "data": {
+    "object": {
+      "id": "{{sub_id}}",
+      "object": "subscription",
+      "customer": "cus_TestCustomer01",
+      "status": "canceled",
+      "cancel_at_period_end": false,
+      "canceled_at": {{period_end}},
+      "ended_at": {{period_end}},
+      "metadata": { "user_uuid": "{{user_uuid}}", "plan_price_uuid": "{{plan_price_uuid}}" },
+      "items": { "object": "list", "data": [ { "id": "si_TestItem01", "current_period_start": {{period_start}}, "current_period_end": {{period_end}}, "price": { "id": "{{stripe_price_id}}" } } ] }
+    }
+  }
+}

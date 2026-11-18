@@ -1,0 +1,32 @@
+{
+  "id": "{{event_id}}",
+  "object": "event",
+  "api_version": "2025-10-29.clover",
+  "type": "invoice.paid",
+  "data": {
+    "object": {
+      "id": "{{invoice_id}}",
+      "object": "invoice",
+      "customer": "cus_TestCustomer01",
+      "currency": "usd",
+      "amount_due": {{amount}},
+      "amount_paid": {{amount}},
+      "billing_reason": "{{billing_reason}}",
+      "status": "paid",
+      "total_discount_amounts": [],
+      "parent": { "type": "subscription_details", "subscription_details": { "subscription": "{{sub_id}}" } },
+      "payments": { "object": "list", "data": [ { "object": "invoice_payment", "payment": { "type": "payment_intent", "payment_intent": "{{payment_intent}}" } } ] },
+      "lines": {
+        "object": "list",
+        "data": [
+          {
+            "id": "il_TestLine01",
+            "amount": {{amount}},
+            "period": { "start": {{period_start}}, "end": {{period_end}} },
+            "pricing": { "price_details": { "price": "{{stripe_price_id}}" } }
+          }
+        ]
+      }
+    }
+  }
+}
